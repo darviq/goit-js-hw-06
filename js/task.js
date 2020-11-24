@@ -70,7 +70,8 @@ console.log(getUsersWithFriend(users, "Goldie Gentry"));
 //Задание 9
 //Массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
 const getNamesSortedByFriendsCount = (users) => {
-  return users
+  const arr = [...users];
+  return arr
     .sort((a, b) => a.friends.length - b.friends.length)
     .map((user) => user.name);
 };
@@ -83,7 +84,7 @@ const getSortedUniqueSkills = (users) => {
   return users
     .reduce((skills, user) => {
       user.skills.map((skill) => {
-        if (!skills.includes(skill)) skills.push(skill);
+        if (!skills.includes(skill)) skills = [...skills, skill];
       });
       return skills;
     }, [])
